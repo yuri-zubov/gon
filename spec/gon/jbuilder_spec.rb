@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 describe Gon do
 
   describe '.jbuilder' do
@@ -43,7 +45,7 @@ describe Gon do
       end
 
       it 'render json from jbuilder template with a partial' do
-        controller.view_paths << 'spec/test_data'
+        controller.append_view_path('spec/test_data')
         Gon.jbuilder :template => 'spec/test_data/sample_with_partial.json.jbuilder', :controller => controller
         expect(Gon.objects.length).to eq(2)
       end
